@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+{% block content %}
+  <!-- 목록 작성 -->
+  <div class="container">
+    <form action="" method="POST">
+      {%csrf_token%}
+      {%bootstrap_form form %}
+      {% bootstrap_button button_type = "submit" content = "수정" %}
+    </form>
+  </div>
+{% endblock %}

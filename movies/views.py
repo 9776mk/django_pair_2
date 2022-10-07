@@ -27,3 +27,28 @@ def detail(request, pk):
 def delete(request, pk):
     Movie.objects.get(pk=pk).delete()
     return redirect("movies:index")
+
+
+def create(request):
+    if request.method == "POST":
+        form = MovieForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("movies:index")
+    else:
+        form = MovieForm()
+    context = {"form": form}
+    return render(request, "movies/create.html", context)
+
+
+def update(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    if request.method == "POST":
+        form = MovieForm(request.POST, instance=movie)
+        if form.is_valid():
+            form.save()
+            return redirect("movies:index", movie.pk)
+    else:
+        form = MovieForm(instance=movie)
+    context = {"form": form}
+    return render(request, "movies/create.html", context)
