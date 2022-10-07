@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>{{movie.title}}</p>
+<p>{{movie.content}}</p>
+<p>{{movie.movie_name}}</p>
+<p>{{movie.grade}}</p>
+<input type=submit>수정</input>
+<input type=submit><a href="{% url 'movie:delete' movie.pk %}">삭제</a></input>
+{% endblock %}
