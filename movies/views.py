@@ -38,17 +38,20 @@ def create(request):
     else:
         form = MovieForm()
     context = {"form": form}
-    return render(request, "movies/create.html", context)
+    return render(request, "movies/create.html", context=context)
 
 
 def update(request, pk):
     movie = Movie.objects.get(pk=pk)
+
     if request.method == "POST":
         form = MovieForm(request.POST, instance=movie)
         if form.is_valid():
             form.save()
-            return redirect("movies:index", movie.pk)
+            return redirect("movies:detail", movie.pk)
+
     else:
         form = MovieForm(instance=movie)
     context = {"form": form}
-    return render(request, "movies/create.html", context)
+
+    return render(request, "movies/update.html", context)

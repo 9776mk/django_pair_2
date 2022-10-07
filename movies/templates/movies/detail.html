@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+
   <p>{{movie.title}}</p>
   <p>{{movie.content}}</p>
   <p>{{movie.movie_name}}</p>
   <p>{{movie.grade}}</p>
-  <input type="submit">
-    <a>
-      href="{% url 'movie:update' movie.pk%}"수정</a>
-  </input>
-  <input type="submit">
-    <a href="{% url 'movie:delete' movie.pk %}">삭제</a>
-  </input>
+
+    <a href="{% url 'movies:update' movie.pk%}">수정 </a>
+
+    <a href="{% url 'movies:delete' movie.pk %}">삭제</a>
 {% endblock %}

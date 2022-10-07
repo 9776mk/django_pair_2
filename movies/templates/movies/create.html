@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
+{% block content %}
+
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% block content %}
-  <div class="container>
-  <h1>리뷰 작성</h1>
-  <form action=" {% url 'movies:create'%} " method=" post"="POST"">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" class="btn btn-primary" content="작성" %}
-  </form>
-</div>
+
+  <div class="container">
+
+    <h1>리뷰 작성</h1>
+    
+    <form action="{% url 'movies:create' %}" method="POST">
+      {% csrf_token %}
+
+      {% bootstrap_form form %}
+
+      {% bootstrap_button button_type="submit" class="btn btn-primary" content="작성"%}
+    </form>
+
+  </div>
+
 {% endblock %}
